@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>KimSooHuan App</title>
+<meta name="theme-color" content="#16a34a" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="apple-touch-icon" href="./icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="KimSooHuan App" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<style>
+:root{--bg:#fff7ed;--card:#fff;--text:#1f2937;--muted:#6b7280;--accent:#16a34a;--line:#e5e7eb;--dark:#111;--danger:#8b0000;--shadow:0 10px 30px rgba(31,41,55,.10)}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fff7ed,#f0fdf4);color:var(--text);min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+.app{max-width:980px;margin:0 auto;padding:14px 12px 86px}.top{position:sticky;top:0;z-index:20;background:rgba(255,247,237,.95);backdrop-filter:blur(10px);padding:calc(12px + env(safe-area-inset-top)) 0 10px;border-bottom:1px solid rgba(229,231,235,.85)}
+h1{margin:0;font-size:30px;letter-spacing:-.5px}.subtitle{margin-top:4px;color:var(--muted);font-size:15px}.section{display:none}.section.active{display:block}.card{background:#fff;border:1px solid #ddd;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.search{width:100%;margin:14px 0 4px;padding:15px 16px;border:2px solid #fde7cf;border-radius:18px;font-size:18px;background:white;outline:none}.search:focus{border-color:var(--accent)}.homeScreen{display:block;padding-top:20px}.homeScreen.hiddenHome{display:none}.homeButtons{display:grid;gap:22px;margin-top:28px}.homeBtn{width:100%;border:0;border-radius:28px;box-shadow:var(--shadow);padding:28px 20px;min-height:155px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff}.homeBtn.inventory{background:linear-gradient(135deg,#2563eb,#0ea5e9)}.homeBtn.formulaBtn{background:linear-gradient(135deg,#16a34a,#84cc16)}.homeBtn.moneyBtn{background:linear-gradient(135deg,#f59e0b,#ef4444)}.homeBtn:active{transform:scale(.99)}.homeIcon{font-size:56px;line-height:1}.homeText{font-size:27px;font-weight:950;line-height:1.1}.homeBack{border:0;background:#111;color:#fff;border-radius:999px;padding:12px 16px;font-size:17px;font-weight:900;box-shadow:var(--shadow);margin:0 0 14px}.sectionTitle{font-size:28px;font-weight:950;margin:2px 0 10px}.sectionTop{display:flex;align-items:center;gap:12px;padding:14px 0 4px}
+/* Formula */
+.recipeGrid{display:grid;gap:14px;margin-top:16px}.recipeBtn{width:100%;border:0;background:var(--card);border-radius:24px;padding:22px 18px;text-align:left;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;font-size:24px;font-weight:900;color:var(--text)}.recipeBtn .emoji{font-size:36px}.recipeBtn .small{display:block;font-size:14px;font-weight:700;color:var(--muted);margin-top:3px}.recipeBtn:active{transform:scale(.99)}.formulaHome,.formulaDetail{display:none}.formulaHome.active,.formulaDetail.active{display:block}.back{border:0;background:#fff;color:#111;border-radius:999px;padding:12px 16px;font-size:17px;font-weight:900;box-shadow:var(--shadow);margin:14px 0}.recipeTitle{font-size:34px;font-weight:950;margin:8px 0 4px}.tag{display:inline-block;background:#dcfce7;color:#166534;border-radius:999px;padding:7px 12px;font-weight:900;margin:6px 0 12px}.formula{display:grid;gap:12px;margin-top:8px}.fitem{background:white;border-radius:22px;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(253,231,207,.8)}.amount{font-size:28px;font-weight:950;line-height:1.1}.name{font-size:20px;font-weight:850;color:var(--muted);margin-top:8px}.empty{padding:24px;text-align:center;color:var(--muted)}
+/* Topping */
+.topping header{padding:16px;border-bottom:2px solid #222}.topping h2{text-align:center;margin:0 0 14px;font-size:26px;letter-spacing:.5px}.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field-title,.choice{display:block;font-weight:850;margin-bottom:6px}.choices{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #ccc;border-radius:999px;padding:9px 10px;background:#fff;font-weight:800;min-height:40px}input,select,textarea{font:inherit;border:1px solid #aaa;border-radius:10px;padding:10px 11px;background:white;min-height:42px}input[type="text"],input[type="date"]{width:100%}textarea{width:100%;min-height:86px;resize:vertical}.tools{position:sticky;top:114px;z-index:10;display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid #ddd;background:rgba(250,250,250,.96);backdrop-filter:blur(8px)}.tools button,.btn{border:1px solid #333;background:#111;color:#fff;border-radius:12px;padding:11px 14px;cursor:pointer;font-weight:900;min-height:44px;white-space:nowrap}.tools button.secondary{background:#fff;color:#111}.tools button.danger{background:var(--danger);border-color:var(--danger)}.searchbar{padding:12px 12px 6px;background:#fff}.searchbar input{width:100%}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid var(--line);padding:8px;vertical-align:middle}th{background:#f1f1f1;text-align:left;border-bottom:2px solid #222}td.item{font-weight:800;width:38%}td.sos,th.sos{border-left:3px solid #222;width:150px}.qty-cell{display:flex;gap:8px;align-items:center}.qty-cell input,td.sos input{width:100%}.plus-btn{width:44px;padding:0!important;font-size:22px;line-height:1;flex:0 0 44px}.break td{border-top:3px solid #222;background:#fbfbfb}.notes{padding:14px 16px 18px}.mobile-list{display:none}.row-card{border-bottom:1px solid var(--line);padding:12px;background:#fff}.row-card.break{border-top:3px solid #222}.row-title{font-size:17px;font-weight:950;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px}.row-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini-label{display:block;font-size:12px;font-weight:900;color:#555;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}.status{font-size:12px;color:#666;font-weight:800}.hidden{display:none!important}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#111;color:#fff;padding:11px 14px;border-radius:999px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:50}.toast.show{opacity:1;bottom:30px}
+@media (min-width:650px){.recipeGrid{grid-template-columns:1fr 1fr}.formula{grid-template-columns:1fr 1fr}.homeButtons{grid-template-columns:repeat(3,1fr)}.homeBtn{min-height:220px}.homeIcon{font-size:76px}.homeText{font-size:30px}}
+@media (max-width:700px){.app{padding:0 0 86px}.top{padding-left:12px;padding-right:12px}.homeScreen{padding:20px 12px}.sectionTop{padding:12px}.homeBtn{min-height:150px}.homeText{font-size:25px}.card{border-radius:0;border-left:0;border-right:0}.topping header{padding:12px}.topping h2{font-size:22px}.meta{grid-template-columns:1fr;gap:10px}.pill{flex:1;justify-content:center;padding:10px 8px}.tools{top:112px;padding:8px 10px}.tools button{flex:1 0 auto}table{display:none}.mobile-list{display:block}input,textarea,button{font-size:16px}.notes{padding:12px}.row-grid{grid-template-columns:1fr;gap:12px}.qty-wrap{width:100%}.qty-wrap .qty-cell{gap:10px}.qty-wrap input{min-height:56px;font-size:20px;padding:14px 15px;border-width:2px}.qty-wrap .plus-btn{flex:0 0 54px;width:54px;min-height:56px;font-size:28px;border-radius:14px}.row-card{padding:14px 12px}.mini-label{font-size:13px}.recipeBtn{font-size:22px;padding:21px 16px}.amount{font-size:30px}.name{font-size:20px}.fitem{padding:19px 17px}.formulaWrap{padding:0 12px 20px}}
+
+/* Money calculator */
+.moneyWrap{padding-bottom:24px}.moneyCard{background:#fff;border-radius:22px;box-shadow:var(--shadow);border:1px solid #fde7cf;overflow:hidden}.moneyHeader{padding:18px;border-bottom:1px solid var(--line)}.grandTotal{font-size:42px;font-weight:950;letter-spacing:-1px;margin-top:8px}.moneyControls{display:flex;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);background:#fff}.moneyControls button{border:0;border-radius:14px;padding:12px 14px;font-weight:950;font-size:16px}.moneyControls .clearMoney{background:#8b0000;color:#fff}.moneyControls .copyMoney{background:#111;color:#fff}.moneyControls .pdfMoney{background:#2563eb;color:#fff}.moneyRows{display:grid;gap:0}.moneyRow{display:grid;grid-template-columns:92px 1fr 118px;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}.moneySummary{border-top:3px solid #f5b56b;background:#fff7ed}.summaryRow{display:grid;grid-template-columns:1fr 170px;gap:12px;align-items:center;padding:15px 18px;border-bottom:1px solid var(--line)}.summaryLabel{font-size:18px;font-weight:950}.summaryValue{text-align:right;font-size:22px;font-weight:950}.revenueInput{width:100%;font-size:22px;min-height:54px;text-align:right;border:2px solid #f5b56b;border-radius:14px;padding:8px 12px;font-weight:950}.statusText{font-size:22px;font-weight:950;text-align:right}.statusText.balanced{color:#1f7a35}.statusText.over{color:#0b7a4b}.statusText.short{color:#b42318}.denom{font-size:22px;font-weight:950}.moneyRow input{width:100%;font-size:22px;min-height:54px;text-align:center;border:2px solid #fde7cf}.subtotal{text-align:right;font-size:21px;font-weight:950}.moneyNote{color:var(--muted);font-weight:750;margin-top:6px}
+@media (max-width:700px){.moneyWrap{padding:0 12px 24px}.moneyRow{grid-template-columns:82px 1fr;gap:8px;padding:13px 12px}.subtotal{grid-column:2;text-align:left;font-size:18px;margin-top:-5px;color:var(--muted)}.denom{font-size:21px}.grandTotal{font-size:40px}.moneyControls{padding:12px}.moneyControls button{flex:1}.moneyRow input{min-height:58px;font-size:24px}.summaryRow{grid-template-columns:1fr;gap:7px;padding:16px 14px}.summaryValue,.statusText{text-align:left;font-size:24px}.revenueInput{text-align:left;min-height:58px;font-size:24px}}
+
+@media print{body{background:white}.app{max-width:none;padding:0}.top,.tabs,.tools,.no-print,.searchbar,.mobile-list,.back,.search{display:none!important}.section{display:block!important}.formulaHome{display:none!important}.formulaDetail{display:block!important}.card,.moneyCard{box-shadow:none;border:none;border-radius:0}table{display:table!important}input,select,textarea{border:none;padding:0;min-height:0}th,td{padding:5px 7px}.fitem{box-shadow:none;border:1px solid #ddd;break-inside:avoid}body.print-money #toppingSection,body.print-money #formulaSection{display:none!important}body.print-money #moneySection{display:block!important}.moneyWrap{padding:0}.moneyHeader{padding:10px 0}.moneyRow,.summaryRow{break-inside:avoid}.revenueInput{border:none}.moneySummary{border-top:2px solid #111}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div id="homeScreen" class="homeScreen no-print">
+    <div class="top">
+      <h1>KimSooHuan App</h1>
+      <div class="subtitle">Choose what you want to use</div>
+    </div>
+    <div class="homeButtons">
+      <button class="homeBtn inventory" onclick="showSection('topping')"><span class="homeIcon">📋</span><span class="homeText">Inventory Form</span></button>
+      <button class="homeBtn formulaBtn" onclick="showSection('formula')"><span class="homeIcon">🍨</span><span class="homeText">Chè Formula</span></button>
+      <button class="homeBtn moneyBtn" onclick="showSection('money')"><span class="homeIcon">💵</span><span class="homeText">Money Calculator</span></button>
+    </div>
+  </div>
+
+  <section id="toppingSection" class="section topping">
+    <div class="sectionTop no-print"><button class="homeBack" onclick="showHome()">← Home</button><div class="sectionTitle">Inventory Form</div></div>
+    <div class="card">
+      <header>
+        <h2>KIỂM TOPPING</h2>
+        <div class="meta">
+          <div><span class="choice">Chi nhánh</span><div class="choices"><label class="pill"><input name="store" type="radio" value="Bolsa"> Bolsa</label><label class="pill"><input name="store" type="radio" value="Garden Grove"> Garden Grove</label><label class="pill"><input name="store" type="radio" value="Rosemead"> Rosemead</label></div></div>
+          <label><span class="field-title">Ngày</span><input id="date" type="date"></label>
+          <div><span class="choice">Ca</span><div class="choices"><label class="pill"><input name="shift" type="radio" value="Opening"> Opening</label><label class="pill"><input name="shift" type="radio" value="Closing"> Closing</label></div></div>
+          <label><span class="field-title">Shiftlead</span><input id="shiftlead" type="text" placeholder="Tên shiftlead"></label>
+        </div>
+      </header>
+      <div class="tools no-print"><button id="saveBtn">Save</button><button class="secondary" id="exportBtn">CSV</button><button class="secondary" id="printBtn">PDF</button><button class="danger" id="clearBtn">Clear</button></div>
+      <div class="searchbar no-print"><input id="filter" type="text" placeholder="Search topping..." autocomplete="off"></div>
+      <table id="toppingTable"><thead><tr><th>Tổng topping</th><th>Ngày: số lượng</th><th class="sos">SOS (2 ngày)</th></tr></thead><tbody></tbody></table>
+      <div class="mobile-list" id="mobileList"></div>
+      <div class="notes"><label><b>Ghi chú</b></label><textarea id="notes" placeholder="Ghi chú thêm..."></textarea></div>
+    </div>
+  </section>
+
+  <section id="formulaSection" class="section formulaWrap">
+    <div class="sectionTop no-print"><button class="homeBack" onclick="showHome()">← Home</button><div class="sectionTitle">Chè Formula</div></div>
+    <div id="formulaHome" class="formulaHome active">
+      <input id="recipeSearch" class="search" placeholder="Search recipe..." autocomplete="off" />
+      <div id="recipeGrid" class="recipeGrid"></div>
+    </div>
+    <div id="formulaDetail" class="formulaDetail">
+      <button class="back" onclick="showFormulaHome()">← Back</button>
+      <div id="detailBody"></div>
+    </div>
+  </section>
+
+  <section id="moneySection" class="section moneyWrap">
+    <div class="sectionTop no-print"><button class="homeBack" onclick="showHome()">← Home</button><div class="sectionTitle">Money Calculator</div></div>
+    <div class="moneyCard">
+      <div class="moneyHeader">
+        <div class="subtitle">Enter quantity for each bill or coin</div>
+        <div id="grandTotal" class="grandTotal">$0.00</div>
+        <div id="moneyBreakdown" class="moneyNote">0 pieces counted</div>
+      </div>
+      <div class="moneyControls no-print">
+        <button class="copyMoney" id="copyMoneyBtn">Copy Total</button>
+        <button class="pdfMoney" id="pdfMoneyBtn">Save PDF</button>
+        <button class="clearMoney" id="clearMoneyBtn">Clear</button>
+      </div>
+      <div id="moneyRows" class="moneyRows"></div>
+      <div class="moneySummary">
+        <div class="summaryRow"><div class="summaryLabel">Cash Total</div><div id="cashTotalSummary" class="summaryValue">$0.00</div></div>
+        <div class="summaryRow"><label class="summaryLabel" for="todayRevenue">Today's Revenue</label><input id="todayRevenue" class="revenueInput" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+        <div class="summaryRow"><div class="summaryLabel">Difference</div><div id="differenceTotal" class="summaryValue">$0.00</div></div>
+        <div class="summaryRow"><div class="summaryLabel">Status</div><div id="moneyStatus" class="statusText balanced">✅ Balanced</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast">Saved</div>
+<script>
+function showHome(){
+  document.getElementById('homeScreen').classList.remove('hiddenHome');
+  document.getElementById('toppingSection').classList.remove('active');
+  document.getElementById('formulaSection').classList.remove('active');
+  document.getElementById('moneySection').classList.remove('active');
+  showFormulaHome();
+  window.scrollTo(0,0);
+}
+function showSection(which){
+  document.getElementById('homeScreen').classList.add('hiddenHome');
+  document.getElementById('toppingSection').classList.toggle('active',which==='topping');
+  document.getElementById('formulaSection').classList.toggle('active',which==='formula');
+  document.getElementById('moneySection').classList.toggle('active',which==='money');
+  if(which==='formula') showFormulaHome();
+  window.scrollTo(0,0);
+}
+const recipes=[
+{name:'Chè Đặc Biệt',emoji:'🍨',items:[['1/2 scoop','Đậu đỏ'],['1/2 scoop','Đậu trắng'],['1 muỗng','Đậu xanh'],['1/2 scoop','Dẻo'],['5 cục','Đác'],['5 cục','Mít'],['2/3 scoop','Bánh lọt'],['Quẹt tím','']]},
+{name:'Chè 3 Màu',emoji:'🌈',items:[['1 scoop','Đậu đỏ'],['1 scoop','Đậu trắng'],['1 muỗng','Đậu xanh'],['1 scoop','Bánh lọt']]},
+{name:'Chè Bơ',emoji:'🥑',items:[['1 scoop','Bơ xay'],['1 scoop hơi vung','Bơ cục'],['1','Bơ pudding'],['1 scoop','Dẻo'],['1 scoop','Rau câu xanh'],['1 muỗng nhỏ','Cà phê'],['1 muỗng','Đậu xanh']]},
+{name:'Dừa Dầm',emoji:'🥥',items:[['1 scoop','Bánh đa'],['1 scoop','Dẻo'],['5 cục','Thạch dừa'],['1 scoop','Đác']]}
+];
+const recipeGrid=document.getElementById('recipeGrid'),recipeSearch=document.getElementById('recipeSearch');
+function renderRecipes(filter=''){const q=filter.trim().toLowerCase();const list=recipes.filter(r=>r.name.toLowerCase().includes(q));recipeGrid.innerHTML=list.length?list.map(r=>`<button class="recipeBtn" onclick="showRecipe('${r.name.replace(/'/g,"\\'")}')"><span class="emoji">${r.emoji}</span><span>${r.name}<span class="small">${r.items.length} ingredients</span></span></button>`).join(''):`<div class="empty">No recipe found</div>`;}
+function showRecipe(name){const r=recipes.find(x=>x.name===name);if(!r)return;document.getElementById('formulaHome').classList.remove('active');document.getElementById('formulaDetail').classList.add('active');window.scrollTo(0,0);document.getElementById('detailBody').innerHTML=`<div class="recipeTitle">${r.emoji} ${r.name}</div><div class="tag">Formula</div><div class="formula">${r.items.map(([amt,n])=>`<div class="fitem"><div class="amount">${amt}</div>${n?`<div class="name">${n}</div>`:''}</div>`).join('')}</div>`;}
+function showFormulaHome(){document.getElementById('formulaDetail').classList.remove('active');document.getElementById('formulaHome').classList.add('active');window.scrollTo(0,0)}
+recipeSearch.addEventListener('input',e=>renderRecipes(e.target.value));renderRecipes();
+
+const items=["đậu đỏ","đậu trắng","đậu xanh","khoai môn","rau câu dẻo","khay rau câu dẻo","rau câu xanh","khay rau câu xanh","sương sáo","khay sương sáo","dừa non","khay dừa non","bánh lọt","hạt lựu","hạt lựu chưa luộc","hạt đác thốt nốt","bơ pudding","bơ (thùng)","dừa sợi","mít (trái + lột sẵn)","sầu riêng","sữa dừa dầm","nước đường","đậu phộng","đậu hũ C8","đậu hũ D1","nhãn nha đam","topping chè thái","thạch dừa","trà thái xanh","flan cheesecake","flandan cheesecake","caramel","sữa dừa chè","sữa béo","sữa tươi","rau câu dừa dứa","rau câu dừa cafe","rau câu nhãn","lợn mẹ"];
+const sectionBreaks=new Set([33,36]);const key='kiem-topping-form-v2';const tbody=document.querySelector('#toppingTable tbody');const mobileList=document.querySelector('#mobileList');const clean=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function inputHtml(name,field){return `<input type="text" data-field="${field}" data-name="${name}" autocomplete="off" inputmode="text">`;}
+items.forEach((name,i)=>{const tr=document.createElement('tr');if(sectionBreaks.has(i))tr.className='break';tr.dataset.search=clean(name);tr.innerHTML=`<td class="item">${name}</td><td><div class="qty-cell">${inputHtml(name,'qty')}<button type="button" class="plus-btn no-print" title="Add parentheses">+</button></div></td><td class="sos">${inputHtml(name,'sos')}</td>`;tbody.appendChild(tr);const card=document.createElement('div');card.className=sectionBreaks.has(i)?'row-card break':'row-card';card.dataset.search=clean(name);card.innerHTML=`<div class="row-title"><span>${name}</span><span class="status" data-status="${name}"></span></div><div class="row-grid"><label class="qty-wrap"><span class="mini-label">Ngày: số lượng</span><div class="qty-cell">${inputHtml(name,'qty-mobile')}<button type="button" class="plus-btn no-print" title="Add parentheses">+</button></div></label><label><span class="mini-label">SOS (2 ngày)</span>${inputHtml(name,'sos-mobile')}</label></div>`;mobileList.appendChild(card);});
+function syncPair(input){const name=input.dataset.name,field=input.dataset.field.replace('-mobile','');document.querySelectorAll(`[data-name="${CSS.escape(name)}"]`).forEach(el=>{if(el!==input&&el.dataset.field.replace('-mobile','')===field)el.value=input.value;});updateStatus(name);save(false)}
+function updateStatus(name){const q=document.querySelector(`[data-field="qty"][data-name="${CSS.escape(name)}"]`)?.value||'';const sos=document.querySelector(`[data-field="sos"][data-name="${CSS.escape(name)}"]`)?.value||'';const el=document.querySelector(`[data-status="${CSS.escape(name)}"]`);if(el)el.textContent=(q||sos)?'filled':'';}
+function getState(){return{date:date.value,shiftlead:shiftlead.value,notes:notes.value,store:document.querySelector('input[name="store"]:checked')?.value||'',shift:document.querySelector('input[name="shift"]:checked')?.value||'',rows:items.map(item=>({item,qty:document.querySelector(`[data-field="qty"][data-name="${CSS.escape(item)}"]`).value,sos:document.querySelector(`[data-field="sos"][data-name="${CSS.escape(item)}"]`).value}))};}
+function setState(s){if(!s)return;date.value=s.date||'';shiftlead.value=s.shiftlead||'';notes.value=s.notes||'';if(s.store)document.querySelector(`input[name="store"][value="${CSS.escape(s.store)}"]`).checked=true;if(s.shift)document.querySelector(`input[name="shift"][value="${CSS.escape(s.shift)}"]`).checked=true;(s.rows||[]).forEach(r=>{document.querySelectorAll(`[data-name="${CSS.escape(r.item)}"]`).forEach(el=>{const f=el.dataset.field.replace('-mobile','');if(f==='qty')el.value=r.qty||'';if(f==='sos')el.value=r.sos||'';});updateStatus(r.item);});}
+function save(show=true){localStorage.setItem(key,JSON.stringify(getState()));if(show)toast('Saved');}
+function toast(msg){const t=document.querySelector('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),1200);}
+function csvEscape(v){return '"'+String(v??'').replaceAll('"','""')+'"';}
+function exportCSV(){const s=getState();const lines=[['Store',s.store],['Date',s.date],['Shift',s.shift],['Shiftlead',s.shiftlead],[],['Topping','Ngay: so luong','SOS (2 ngay)'],...s.rows.map(r=>[r.item,r.qty,r.sos]),[],['Notes',s.notes]];const blob=new Blob([lines.map(r=>r.map(csvEscape).join(',')).join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`kiem-topping-${s.date||'today'}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);}
+document.addEventListener('click',e=>{if(e.target.classList.contains('plus-btn')){const input=e.target.parentElement.querySelector('input');const start=input.selectionStart??input.value.length,end=input.selectionEnd??input.value.length;input.value=input.value.slice(0,start)+'()'+input.value.slice(end);input.focus();input.setSelectionRange(start+1,start+1);input.dispatchEvent(new Event('input',{bubbles:true}));}});
+document.addEventListener('input',e=>{if(e.target.matches('[data-field]'))syncPair(e.target);else if(e.target.id!=='recipeSearch'&&e.target.id!=='filter')save(false);});
+filter.addEventListener('input',()=>{const q=clean(filter.value);document.querySelectorAll('tbody tr,.row-card').forEach(el=>el.classList.toggle('hidden',q&&!el.dataset.search.includes(q)));});
+saveBtn.onclick=()=>save(true);exportBtn.onclick=exportCSV;printBtn.onclick=()=>window.print();clearBtn.onclick=()=>{if(confirm('Clear all fields?')){localStorage.removeItem(key);location.reload();}};
+setState(JSON.parse(localStorage.getItem(key)||localStorage.getItem('kiem-topping-form-v1')||'null'));if(!date.value)date.valueAsDate=new Date();save(false);
+
+
+const moneyDenoms=[100,50,20,10,5,1,0.25,0.10,0.05,0.01];
+const moneyKey='kiem-money-calculator-v1';
+const moneyRows=document.getElementById('moneyRows');
+function moneyLabel(v){return v>=1?'$'+v.toFixed(0):(v===0.25?'25¢':v===0.10?'10¢':v===0.05?'5¢':'1¢');}
+function renderMoneyRows(){moneyRows.innerHTML=moneyDenoms.map(v=>`<div class="moneyRow"><div class="denom">${moneyLabel(v)}</div><input type="number" inputmode="numeric" min="0" step="1" data-denom="${v}" placeholder="0"><div class="subtotal" data-subtotal="${v}">$0.00</div></div>`).join('');loadMoney();calcMoney();}
+function moneyFmt(n){return '$'+Number(n||0).toFixed(2);}
+function calcMoney(){let total=0,pieces=0;document.querySelectorAll('[data-denom]').forEach(inp=>{const denom=parseFloat(inp.dataset.denom);const count=Math.max(0,parseInt(inp.value||'0',10)||0);const sub=denom*count;total+=sub;pieces+=count;const st=document.querySelector(`[data-subtotal="${inp.dataset.denom}"]`);if(st)st.textContent=moneyFmt(sub);});const revenue=parseFloat(document.getElementById('todayRevenue')?.value||'0')||0;const diff=total-revenue;document.getElementById('grandTotal').textContent=moneyFmt(total);document.getElementById('cashTotalSummary').textContent=moneyFmt(total);document.getElementById('differenceTotal').textContent=(diff<0?'-':'')+moneyFmt(Math.abs(diff));const status=document.getElementById('moneyStatus');status.className='statusText';if(Math.abs(diff)<0.005){status.textContent='✅ Balanced';status.classList.add('balanced');}else if(diff>0){status.textContent='🟢 Over by '+moneyFmt(diff);status.classList.add('over');}else{status.textContent='🔴 Short by '+moneyFmt(Math.abs(diff));status.classList.add('short');}document.getElementById('moneyBreakdown').textContent=pieces+' pieces counted';saveMoney();}
+function saveMoney(){const data={revenue:document.getElementById('todayRevenue')?.value||''};document.querySelectorAll('[data-denom]').forEach(inp=>data[inp.dataset.denom]=inp.value);localStorage.setItem(moneyKey,JSON.stringify(data));}
+function loadMoney(){const data=JSON.parse(localStorage.getItem(moneyKey)||'{}');document.querySelectorAll('[data-denom]').forEach(inp=>{inp.value=data[inp.dataset.denom]||'';});const rev=document.getElementById('todayRevenue');if(rev)rev.value=data.revenue||'';}
+renderMoneyRows();
+moneyRows.addEventListener('input',e=>{if(e.target.matches('[data-denom]'))calcMoney();});
+document.getElementById('todayRevenue').addEventListener('input',calcMoney);
+clearMoneyBtn.onclick=()=>{if(confirm('Clear money calculator?')){localStorage.removeItem(moneyKey);document.querySelectorAll('[data-denom]').forEach(i=>i.value='');document.getElementById('todayRevenue').value='';calcMoney();}};
+pdfMoneyBtn.onclick=()=>{document.body.classList.add('print-money');window.print();setTimeout(()=>document.body.classList.remove('print-money'),800);};
+copyMoneyBtn.onclick=async()=>{const total=document.getElementById('grandTotal').textContent;const revenue=document.getElementById('todayRevenue').value||'0.00';const diff=document.getElementById('differenceTotal').textContent;const status=document.getElementById('moneyStatus').textContent;const text=`Cash Total: ${total}\nToday's Revenue: $${parseFloat(revenue||0).toFixed(2)}\nDifference: ${diff}\nStatus: ${status}`;try{await navigator.clipboard.writeText(text);toast('Total copied');}catch(e){toast(total);}};
+
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
+</script>
+</body>
+</html>
